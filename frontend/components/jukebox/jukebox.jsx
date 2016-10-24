@@ -3,7 +3,7 @@ import Track from './track';
 
 const Jukebox = ({ tracks, isRecording, isPlaying, onPlay }) => (
   <div>
-    Jukebox
+    <h3>Jukebox</h3>
     <ul>
       {
         Object.keys(tracks).map((id) => {

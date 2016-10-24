@@ -4,7 +4,8 @@ import { startRecording, stopRecording, addNotes } from '../../actions/track_act
 
 const mapStateToProps = state => ({
   tracks: state.tracks,
-  isRecording: state.isRecording
+  isRecording: state.isRecording,
+  isPlaying: state.isPlaying
 });
 
 const mapDispatchToProps = dispatch => ({

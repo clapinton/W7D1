@@ -49,17 +49,16 @@ class Synth extends React.Component {
     this.playNotes();
     let { notes } = this.props;
     return (
-      <div>
-        Synth
-        <ul>
-          {
-
-            this.notes.map( note => (
-              <li key={note[0]}>
-                <NoteKey note={note[0]} pressed={notes.includes(note[0])}/>
-              </li>))
+      <div className='app-parent'>
+        <h1 className="app-name" >Synth</h1>
+        <div className="keyboard">
+        {
+          this.notes.map( note => (
+            <div key={note[0]}>
+              <NoteKey note={note[0]} pressed={notes.includes(note[0])}/>
+            </div>))
           }
-        </ul>
+        </div>
       </div>
     );
   }

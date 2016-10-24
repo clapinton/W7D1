@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { startPlaying, stopPlaying } from '../../actions/playing_actions';
 import { groupUpdate } from '../../actions/notes_actions';
 import Jukebox from './jukebox';
+import $ from 'jquery';
 
 const mapStateToProps = state => ({
   tracks: state.tracks,
@@ -12,7 +13,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   const onPlay = track => e => {
       dispatch(startPlaying());
-      const playBackStartTime = Date.now();
+      let playBackStartTime = Date.now();
       let currNote = 0;
       let timeElapsed = 0;
 
@@ -26,8 +27,16 @@ const mapDispatchToProps = dispatch => {
             currNote++;
           }
         } else {
-          clearInterval(interval);
-          dispatch(stopPlaying());
+          let checkbox = $('#track_' + track.id);
+
+          if( checkbox.is(':checked')) {
+            currNote = 0;
+            timeElapsed = 0;
+            playBackStartTime = Date.now();
+          } else {
+            clearInterval(interval);
+            dispatch(stopPlaying());
+          }
         }
       }, 1);
     };

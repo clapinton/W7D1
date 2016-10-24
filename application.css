@@ -1,0 +1,82 @@
+html, body, h1, h2, h3, div, ul, li, button {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-family: 'Righteous', cursive;
+  background: inherit;
+  display: block;
+}
+
+h3 {
+  font-size: 40px;
+  padding: 30px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.app-name {
+  text-align: center;
+  font-size: 60px;
+  padding-bottom: 30px;
+}
+
+.app-parent {
+  text-align: center;
+}
+
+.keyboard {
+  display: flex;
+}
+
+.key-note {
+  height: 150px;
+  width: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  box-shadow: 0 8px 5px #ccc;
+}
+
+.pressed {
+  background-color: #ccc;
+  box-shadow: none;
+  color: white;
+}
+
+.start-button, .stop-button, .play-button {
+  padding: 10px 20px;
+  display: inline-block;
+  margin: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.start-button {
+  background-color: #2fcc72;
+  color: white;
+  border: solid 2px #27ae60;
+}
+
+.start-button:disabled, .stop-button:disabled {
+  background-color: #95a5a6;
+  border-color: #7f8c8d;
+  cursor: not-allowed;
+}
+
+.stop-button {
+  background-color: #e74c3c;
+  color: white;
+  border: solid 2px #c0392b;
+}
