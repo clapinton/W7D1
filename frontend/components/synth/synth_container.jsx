@@ -5,7 +5,8 @@ import { addNotes } from '../../actions/track_actions';
 
 const mapStateToProps = state => ({
   notes: state.notes,
-  isRecording: state.isRecording
+  isRecording: state.isRecording,
+  isPlaying: state.isPlaying
 });
 
 const mapDispatchToProps = dispatch => ({
