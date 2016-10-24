@@ -2,6 +2,7 @@ import React from 'react';
 import { NOTE_NAMES, TONES, MAPPED_NOTES } from '../../util/tones';
 import Note from '../../util/note';
 import $ from 'jquery';
+import NoteKey from './note_key';
 
 class Synth extends React.Component {
 
@@ -10,14 +11,21 @@ class Synth extends React.Component {
 
     this.notes = NOTE_NAMES.map( key => [key, new Note(TONES[key])] );
     this.onKeyDown = this.onKeyDown.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
   }
 
   onKeyDown(e) {
     this.props.keyPressed(MAPPED_NOTES[e.keyCode]);
+    if(this.props.isRecording) {
+      this.props.addNotes(this.props.notes);
+    }
   }
 
   onKeyUp(e) {
     this.props.keyReleased(MAPPED_NOTES[e.keyCode]);
+    if(this.props.isRecording) {
+      this.props.addNotes(this.props.notes);
+    }
   }
 
   playNotes() {
@@ -39,12 +47,17 @@ class Synth extends React.Component {
 
   render() {
     this.playNotes();
+    let { notes } = this.props;
     return (
       <div>
         Synth
         <ul>
           {
-            this.notes.map( note => <li>{note[0]}</li>)
+
+            this.notes.map( note => (
+              <li key={note[0]}>
+                <NoteKey note={note[0]} pressed={notes.includes(note[0])}/>
+              </li>))
           }
         </ul>
       </div>
